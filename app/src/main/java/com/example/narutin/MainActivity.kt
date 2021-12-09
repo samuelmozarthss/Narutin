@@ -1,11 +1,9 @@
 package com.example.narutin
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
-import android.widget.LinearLayout
-import android.widget.LinearLayout.HORIZONTAL
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.LinearLayoutCompat.HORIZONTAL
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import retrofit2.Call
@@ -16,7 +14,7 @@ class MainActivity : AppCompatActivity() {
 
 
     private lateinit var mRecyclerview: RecyclerView
-    private var mCharacterList : ArrayList <CharactersModel> = ArrayList()
+    private var mCharacterList: ArrayList<CharactersModel> = ArrayList()
     private val mAdapter: CharacterAdapter = CharacterAdapter(mCharacterList)
 
 
@@ -35,12 +33,22 @@ class MainActivity : AppCompatActivity() {
                 call: Call<List<CharactersModel>>,
                 response: Response<List<CharactersModel>>
             ) {
-                response.body()?.forEach {
-                    mCharacterList.add(it)
+//                response.body()?.forEach {
+//                    mCharacterList.add(it)
+//                }
 
+                response.body()?.let { charactersList ->
+                    mCharacterList.addAll(charactersList)
                 }
-                Log.d("teste",mCharacterList.toString())
+//                val res = response.body()
+//                if(res != null) {
+//                    mCharacterList.addAll(res)
+//                }
+
+                Log.d("teste", mCharacterList.toString())
                 mAdapter.notifyDataSetChanged()
+
+//                Lista de ocupações
             }
 
             override fun onFailure(call: Call<List<CharactersModel>>, t: Throwable) {
@@ -49,7 +57,8 @@ class MainActivity : AppCompatActivity() {
         })
 
         mRecyclerview = findViewById(R.id.characters_list)
-        mRecyclerview.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        mRecyclerview.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         mRecyclerview.adapter = mAdapter
     }
 }
