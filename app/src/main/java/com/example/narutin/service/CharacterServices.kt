@@ -1,5 +1,6 @@
-package com.example.narutin
+package com.example.narutin.service
 
+import com.example.narutin.CharactersModel
 import retrofit2.Call
 import retrofit2.http.GET
 

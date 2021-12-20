@@ -1,10 +1,12 @@
-package com.example.narutin
+package com.example.narutin.ui.adapter
 
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.example.narutin.CharactersModel
+import com.example.narutin.R
 
 class CharacterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 

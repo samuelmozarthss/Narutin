@@ -1,8 +1,10 @@
-package com.example.narutin
+package com.example.narutin.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.narutin.CharactersModel
+import com.example.narutin.R
 
 class CharacterAdapter(private var mCharacterList: List<CharactersModel>) :
     RecyclerView.Adapter<CharacterViewHolder>() {

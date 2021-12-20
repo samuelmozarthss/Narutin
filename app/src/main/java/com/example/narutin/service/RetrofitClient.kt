@@ -1,4 +1,4 @@
-package com.example.narutin
+package com.example.narutin.service
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -13,7 +13,7 @@ class RetrofitClient private constructor() {
         private fun getRetrofitInstance(): Retrofit {
 
             val httpClient = OkHttpClient.Builder()
-            if (!::retrofit.isInitialized) {
+            if (!Companion::retrofit.isInitialized) {
                 retrofit = Retrofit.Builder()
                     .baseUrl(baseUrl)
                     .client(httpClient.build())

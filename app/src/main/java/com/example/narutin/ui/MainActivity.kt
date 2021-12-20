@@ -1,11 +1,14 @@
-package com.example.narutin
+package com.example.narutin.ui
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.narutin.*
+import com.example.narutin.service.CharacterServices
+import com.example.narutin.service.RetrofitClient
+import com.example.narutin.ui.adapter.CharacterAdapter
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
