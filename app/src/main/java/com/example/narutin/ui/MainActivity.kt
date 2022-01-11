@@ -3,6 +3,7 @@ package com.example.narutin.ui
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.narutin.*
@@ -15,7 +16,7 @@ import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 
-
+    private lateinit var viewModel: MainViewModel
     private lateinit var mRecyclerview: RecyclerView
     private var mCharacterList: ArrayList<CharactersModel> = ArrayList()
     private val mAdapter: CharacterAdapter = CharacterAdapter(mCharacterList)
@@ -26,6 +27,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         supportActionBar!!.hide()
+
+        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
 
         val remote = RetrofitClient.createService(CharacterServices::class.java)
         val call: Call<List<CharactersModel>> = remote.list()
